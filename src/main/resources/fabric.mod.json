@@ -1,0 +1,17 @@
+{
+  "id": "lrn2spell",
+  "name": "Lrn 2 Spell",
+  "description": "Keyboard Spellcasting",
+  "version": "1.0.0",
+  "side": "universal",
+  "initializers": [
+    "net.lrn2spell.Lrn2Spell"
+  ],
+  "requires": {
+    "fabric": "*"
+  },
+  "mixins": {
+    "client": "lrn2spell.client.json",
+    "common": "lrn2spell.common.json"
+  }
+}
