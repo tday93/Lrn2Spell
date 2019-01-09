@@ -3,7 +3,7 @@
   "package": "net.lrn2spell.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ExampleMixin"
+    "ClientTickMixin"
   ],
   "injectors": {
     "defaultRequire": 1

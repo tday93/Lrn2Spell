@@ -5,7 +5,8 @@
   "version": "1.0.0",
   "side": "universal",
   "initializers": [
-    "net.lrn2spell.Lrn2Spell"
+    "net.lrn2spell.Lrn2Spell",
+    "net.lrn2spell.ClientInit"
   ],
   "requires": {
     "fabric": "*"
