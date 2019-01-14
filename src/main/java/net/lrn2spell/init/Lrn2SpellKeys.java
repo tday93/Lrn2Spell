@@ -31,7 +31,7 @@ public class Lrn2SpellKeys {
     }
 
     public static FabricKeyBinding registerKey(String name, Integer code, String category) {
-        FabricKeyBinding key = FabricKeyBinding.Builder.create(new Identifier(Lrn2Spell.MODID + ":" + name), InputUtil.Type.KEY_KEYBOARD, code, category).build();
+        FabricKeyBinding key = FabricKeyBinding.Builder.create(new Identifier(Lrn2Spell.MOD_ID + ":" + name), InputUtil.Type.KEY_KEYBOARD, code, category).build();
         KeyBindingRegistry.INSTANCE.register(key);
 
         return key;

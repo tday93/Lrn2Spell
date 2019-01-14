@@ -17,7 +17,7 @@ public class Lrn2SpellItems {
 
     public static Item registerItem(Item item, String name) {
 
-        Registry.register(Registry.ITEM, Lrn2Spell.MODID + ":" + name, item);
+        Registry.register(Registry.ITEM, Lrn2Spell.MOD_ID + ":" + name, item);
         return item;
     }
 }

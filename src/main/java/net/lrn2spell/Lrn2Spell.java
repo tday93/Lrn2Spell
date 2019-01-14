@@ -2,11 +2,12 @@ package net.lrn2spell;
 
 import net.fabricmc.api.ModInitializer;
 import net.lrn2spell.init.Lrn2SpellItems;
+import net.lrn2spell.init.Lrn2SpellBlocks;
 
 
 public class Lrn2Spell implements ModInitializer {
 
-	public static final String MODID = "lrn2spell";
+	public static final String MOD_ID = "lrn2spell";
 	public static final String ITEM_CAT = "Lrn2Spell";
 
 	@Override
@@ -18,6 +19,7 @@ public class Lrn2Spell implements ModInitializer {
 		System.out.println("Hello Fabric world!");
 
 		Lrn2SpellItems.init();
+		Lrn2SpellBlocks.init();
 
 	}
 }

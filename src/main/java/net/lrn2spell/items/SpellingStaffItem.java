@@ -6,6 +6,8 @@ import net.minecraft.util.ActionResult;
 
 public class SpellingStaffItem extends Item {
 
+    private String SPELL;
+
     public SpellingStaffItem(Settings settings) {
         super(settings);
     }
@@ -14,6 +16,30 @@ public class SpellingStaffItem extends Item {
     public ActionResult useOnBlock(ItemUsageContext itemUsageContext_1) {
 
         return ActionResult.PASS;
+    }
+
+    public String getSpell(){
+        return this.SPELL;
+    }
+
+    public String setSpell(String newSpell){
+        this.SPELL = newSpell;
+
+        return this.SPELL;
+    }
+
+    public String addElement(String element){
+        if (this.SPELL.length() >= 5){
+            this.SPELL = this.SPELL.substring(1,4);
+        }
+        this.SPELL = this.SPELL + element;
+
+        return this.SPELL;
+    }
+
+    public String clearSpell(){
+        this.SPELL = "";
+        return this.SPELL;
     }
 
 }
