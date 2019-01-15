@@ -12,10 +12,10 @@ public class Lrn2SpellItems {
 
     public static void init(){
 
-        SPELLING_STAFF = registerItem(new SpellingStaffItem((new Item.Settings()).itemGroup(ItemGroup.MISC)), "spelling_staff");
+        SPELLING_STAFF = register(new SpellingStaffItem((new Item.Settings()).itemGroup(ItemGroup.MISC)), "spelling_staff");
     }
 
-    public static Item registerItem(Item item, String name) {
+    public static Item register(Item item, String name) {
 
         Registry.register(Registry.ITEM, Lrn2Spell.MOD_ID + ":" + name, item);
         return item;

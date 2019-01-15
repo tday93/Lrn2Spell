@@ -16,8 +16,8 @@ public class ClientTickMixin {
 	@Shadow
 	private ClientPlayerEntity player;
 
-	@Inject(at = @At("HEAD"), method = "method_1508()V")
-	private void method_1508(CallbackInfo info) {
+	@Inject(at = @At("HEAD"), method = "render(Z)V")
+	private void render(boolean boolean_1, CallbackInfo info) {
 		if (player.inventory.getMainHandStack().getItem() instanceof SpellingStaffItem){
 			ClientProxy.checkKeys(player.inventory.getMainHandStack().getItem());
 		}

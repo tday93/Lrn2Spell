@@ -15,6 +15,8 @@ public class SpellingStaffItem extends Item {
     @Override
     public ActionResult useOnBlock(ItemUsageContext itemUsageContext_1) {
 
+        // this is where spell determination will need to happen
+        this.clearSpell();
         return ActionResult.PASS;
     }
 

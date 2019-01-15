@@ -14,10 +14,16 @@ import net.fabricmc.fabric.block.FabricBlockSettings;
 
 public class SpellBlock extends Block implements BlockEntityProvider {
 
+    String name = "spell_block";
+
     public SpellBlock(){
         super(FabricBlockSettings.of(Material.STONE).hardness(0.0f).collidable(false).build());
         Registry.BLOCK.register(new Identifier(Lrn2Spell.MOD_ID, "spell_block"), this);
     }
+
+    public String getName(){return this.name;}
+
+    public Block getBlock(){return this;}
 
     public BlockEntity createBlockEntity(BlockView var1) {
         return new SpellBlockEntity();
