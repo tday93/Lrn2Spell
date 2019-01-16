@@ -4,6 +4,7 @@ import net.lrn2spell.items.SpellingStaffItem;
 import net.lrn2spell.proxy.ClientProxy;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.world.ClientWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,11 +17,12 @@ public class ClientTickMixin {
 	@Shadow
 	private ClientPlayerEntity player;
 
-	@Inject(at = @At("HEAD"), method = "render(Z)V")
-	private void render(boolean boolean_1, CallbackInfo info) {
-		if (player.inventory.getMainHandStack().getItem() instanceof SpellingStaffItem){
-			ClientProxy.checkKeys(player.inventory.getMainHandStack().getItem());
-		}
+
+	@Inject(at = @At("HEAD"), method = "method_1508()V")
+	private void method_1508(CallbackInfo info) {
+        if (this.player.inventory.getMainHandStack().getItem() instanceof SpellingStaffItem) {
+            ClientProxy.checkKeys(player.inventory.getMainHandStack().getItem());
+        }
 	}
 
 }

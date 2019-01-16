@@ -20,12 +20,12 @@ public class Lrn2SpellKeys {
 
         KeyBindingRegistry.INSTANCE.addCategory(Lrn2Spell.ITEM_CAT);
 
-        FIRE = registerKey("Fire", 37, Lrn2Spell.ITEM_CAT);
-        EARTH = registerKey("Earth", 37, Lrn2Spell.ITEM_CAT);
-        AIR = registerKey("Air", 37, Lrn2Spell.ITEM_CAT);
-        WATER = registerKey("Water", 37, Lrn2Spell.ITEM_CAT);
-        ARCANE = registerKey("Arcane", 37, Lrn2Spell.ITEM_CAT);
-        SHIELD = registerKey("Shield", 37, Lrn2Spell.ITEM_CAT);
+        FIRE = registerKey("fire", 37, Lrn2Spell.ITEM_CAT);
+        EARTH = registerKey("earth", 37, Lrn2Spell.ITEM_CAT);
+        AIR = registerKey("air", 37, Lrn2Spell.ITEM_CAT);
+        WATER = registerKey("water", 37, Lrn2Spell.ITEM_CAT);
+        ARCANE = registerKey("arcane", 37, Lrn2Spell.ITEM_CAT);
+        SHIELD = registerKey("shield", 37, Lrn2Spell.ITEM_CAT);
 
 
     }

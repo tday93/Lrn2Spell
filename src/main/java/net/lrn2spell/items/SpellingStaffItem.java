@@ -30,13 +30,12 @@ public class SpellingStaffItem extends Item {
         return this.SPELL;
     }
 
-    public String addElement(String element){
+    public void addElement(String element){
         if (this.SPELL.length() >= 5){
             this.SPELL = this.SPELL.substring(1,4);
         }
         this.SPELL = this.SPELL + element;
 
-        return this.SPELL;
     }
 
     public String clearSpell(){

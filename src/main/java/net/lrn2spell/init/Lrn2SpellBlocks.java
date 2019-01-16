@@ -15,21 +15,21 @@ import java.util.function.Supplier;
 
 public class Lrn2SpellBlocks {
 
-    public static SpellBlock SPELL_BLOCK;
+    public static Block SPELL_BLOCK;
 
     public static BlockEntityType<SpellBlockEntity> SPELL_BLOCK_BE;
 
     public static void init() {
 
-        SPELL_BLOCK = new SpellBlock();
+        SPELL_BLOCK = register(new SpellBlock(), "spell_block", Lrn2Spell.lrn2spellGroup );
 
         SPELL_BLOCK_BE = register("spell_block", SpellBlockEntity::new);
     }
 
-    public static SpellBlock register(String name, SpellBlock block, ItemGroup tab){
-        Registry.register(Registry.BLOCK, Lrn2Spell.MOD_ID + ":" + block.getName(), block.getBlock());
-        BlockItem item = new BlockItem(block.getBlock(), new Item.Settings().itemGroup(tab));
-        Lrn2SpellItems.register(item, block.getName());
+    public static Block register(Block block, String name, ItemGroup tab){
+        Registry.register(Registry.BLOCK, Lrn2Spell.MOD_ID + ":" + name, block);
+        BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(tab));
+        Lrn2SpellItems.register(item, name);
         return block;
 
     }
