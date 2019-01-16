@@ -1,7 +1,6 @@
-package net.lrn2spell;
+package net.lrn2spell.client;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.lrn2spell.init.Lrn2SpellKeys;
 
 public class ClientInit implements ClientModInitializer {
 

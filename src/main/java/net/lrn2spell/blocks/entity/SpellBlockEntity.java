@@ -1,6 +1,6 @@
 package net.lrn2spell.blocks.entity;
 
-import net.lrn2spell.init.Lrn2SpellBlocks;
+import net.lrn2spell.blocks.Lrn2SpellBlocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.Tickable;
 

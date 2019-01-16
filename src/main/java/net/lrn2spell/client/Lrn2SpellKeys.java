@@ -1,4 +1,4 @@
-package net.lrn2spell.init;
+package net.lrn2spell.client;
 
 import net.fabricmc.fabric.api.client.keybinding.FabricKeyBinding;
 import net.fabricmc.fabric.api.client.keybinding.KeyBindingRegistry;

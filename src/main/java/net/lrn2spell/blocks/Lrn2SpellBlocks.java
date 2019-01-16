@@ -1,8 +1,9 @@
-package net.lrn2spell.init;
+package net.lrn2spell.blocks;
 
 import net.lrn2spell.Lrn2Spell;
 import net.lrn2spell.blocks.SpellBlock;
 import net.lrn2spell.blocks.entity.SpellBlockEntity;
+import net.lrn2spell.items.Lrn2SpellItems;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;

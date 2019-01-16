@@ -6,7 +6,8 @@
   "side": "universal",
   "initializers": [
     "net.lrn2spell.Lrn2Spell",
-    "net.lrn2spell.ClientInit"
+    "net.lrn2spell.client.ClientInit",
+    "net.lrn2spell.network.NetworkInit"
   ],
   "requires": {
     "fabric": "*"

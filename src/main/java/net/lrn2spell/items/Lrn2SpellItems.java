@@ -1,4 +1,4 @@
-package net.lrn2spell.init;
+package net.lrn2spell.items;
 
 import net.lrn2spell.Lrn2Spell;
 import net.lrn2spell.items.SpellingStaffItem;

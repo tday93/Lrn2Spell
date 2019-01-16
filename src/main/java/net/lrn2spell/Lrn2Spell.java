@@ -2,8 +2,8 @@ package net.lrn2spell;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.lrn2spell.init.Lrn2SpellItems;
-import net.lrn2spell.init.Lrn2SpellBlocks;
+import net.lrn2spell.items.Lrn2SpellItems;
+import net.lrn2spell.blocks.Lrn2SpellBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
