@@ -12,6 +12,7 @@ import net.fabricmc.fabric.block.FabricBlockSettings;
 public class SpellBlock extends Block implements BlockEntityProvider {
 
     public SpellBlock(){
+
         super(FabricBlockSettings.of(Material.STONE).hardness(0.0f).collidable(false).build());
     }
 

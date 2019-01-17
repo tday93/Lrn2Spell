@@ -10,6 +10,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import java.util.function.Supplier;
@@ -28,7 +29,7 @@ public class Lrn2SpellBlocks {
     }
 
     public static Block register(Block block, String name, ItemGroup tab){
-        Registry.register(Registry.BLOCK, Lrn2Spell.MOD_ID + ":" + name, block);
+        Registry.register(Registry.BLOCK, new Identifier(Lrn2Spell.MOD_ID, name), block);
         BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(tab));
         Lrn2SpellItems.register(item, name);
         return block;

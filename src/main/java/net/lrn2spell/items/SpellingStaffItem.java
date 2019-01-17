@@ -1,11 +1,18 @@
 package net.lrn2spell.items;
 
 import net.lrn2spell.misc.Tools;
+import net.lrn2spell.spells.BeamSpell;
+import net.lrn2spell.spells.ShieldSpell;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.text.TextComponent;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
 
 public class SpellingStaffItem extends Item {
 
@@ -15,14 +22,29 @@ public class SpellingStaffItem extends Item {
     }
 
     @Override
+    public TypedActionResult<ItemStack> use(World world_1, PlayerEntity player, Hand hand_1){
+        return new TypedActionResult<>(ActionResult.PASS, player.getStackInHand(hand_1));
+
+    }
+
+    @Override
     public ActionResult useOnBlock(ItemUsageContext itemUsageContext_1) {
+        ActionResult result = ActionResult.PASS;
+        System.out.println("Using Staff");
         ItemStack stack = itemUsageContext_1.getItemStack();
         String spell = Tools.getTagCompound(stack).getString("spell");
         Tools.notify(itemUsageContext_1.getPlayer(), spell);
 
+        if (spell.contentEquals("AR")){
+            System.out.println("Spell matched 'AR' ");
+            result = ShieldSpell.dirtShield(itemUsageContext_1);
+        } else if (spell.contentEquals("RR")){
+            result = BeamSpell.arcaneBeam(itemUsageContext_1, 2.0f);
+        }
+
         // this is where spell determination will need to happen
         this.clearSpell(stack);
-        return ActionResult.PASS;
+        return result;
     }
 
     public String getSpell(ItemStack stack){
@@ -49,12 +71,14 @@ public class SpellingStaffItem extends Item {
         } else if (element == 6){
             strElement = "S";
         }
-
+        System.out.println("Adding element: " + strElement);
         String spell = Tools.getTagCompound(stack).getString("spell");
+        System.out.println("Existing Spell:" + spell);
         if (spell.length() >= 5){
-            spell = spell.substring(1,4);
+            spell = spell.substring(1,5);
         }
         spell = spell + strElement;
+        System.out.println("New Spell:" + spell);
         Tools.getTagCompound(stack).putString("spell", spell);
 
     }
