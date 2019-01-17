@@ -38,8 +38,6 @@ public class SpellingStaffItem extends Item {
         if (spell.contentEquals("AR")){
             System.out.println("Spell matched 'AR' ");
             result = ShieldSpell.dirtShield(itemUsageContext_1);
-        } else if (spell.contentEquals("RR")){
-            result = BeamSpell.arcaneBeam(itemUsageContext_1, 2.0f);
         }
 
         // this is where spell determination will need to happen
