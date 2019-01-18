@@ -12,22 +12,22 @@ public class ClientProxy {
 
         if (stack.getItem() instanceof SpellingStaffItem) {
 
-            if (Lrn2SpellKeys.FIRE.method_1436()) {
+            if (ModKeys.FIRE.method_1436()) {
                 NetworkInit.sendToServer(new AddElementPacket(1));
 
-            } else if (Lrn2SpellKeys.EARTH.method_1436()) {
+            } else if (ModKeys.EARTH.method_1436()) {
                 NetworkInit.sendToServer(new AddElementPacket(2));
 
-            } else if (Lrn2SpellKeys.AIR.method_1436()) {
+            } else if (ModKeys.AIR.method_1436()) {
                 NetworkInit.sendToServer(new AddElementPacket(3));
 
-            } else if (Lrn2SpellKeys.WATER.method_1436()) {
+            } else if (ModKeys.WATER.method_1436()) {
                 NetworkInit.sendToServer(new AddElementPacket(4));
 
-            } else if (Lrn2SpellKeys.ARCANE.method_1436()) {
+            } else if (ModKeys.ARCANE.method_1436()) {
                 NetworkInit.sendToServer(new AddElementPacket(5));
 
-            } else if (Lrn2SpellKeys.SHIELD.method_1436()) {
+            } else if (ModKeys.SHIELD.method_1436()) {
                 NetworkInit.sendToServer(new AddElementPacket(6));
 
             }

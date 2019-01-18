@@ -10,7 +10,6 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 
@@ -21,13 +20,26 @@ public class SpellingStaffItem extends Item {
         super(settings);
     }
 
-    @Override
     public TypedActionResult<ItemStack> use(World world_1, PlayerEntity player, Hand hand_1){
-        return new TypedActionResult<>(ActionResult.PASS, player.getStackInHand(hand_1));
+        System.out.println("Using Spell Staff");
+        TypedActionResult<ItemStack> result = new TypedActionResult<>(ActionResult.PASS, player.getStackInHand(hand_1));
+        ItemStack stack = player.getStackInHand(hand_1);
+        String spell = Tools.getTagCompound(stack).getString("spell");
+        Tools.notify(player, spell);
+
+        if (spell.matches("RR")){
+            System.out.println("Spell Matched 'RR'");
+            result = new TypedActionResult<>(BeamSpell.arcaneBeam(player, 4.0f), stack);
+        }
+        this.clearSpell(stack);
+
+
+
+
+        return result;
 
     }
 
-    @Override
     public ActionResult useOnBlock(ItemUsageContext itemUsageContext_1) {
         ActionResult result = ActionResult.PASS;
         System.out.println("Using Staff");
@@ -35,7 +47,7 @@ public class SpellingStaffItem extends Item {
         String spell = Tools.getTagCompound(stack).getString("spell");
         Tools.notify(itemUsageContext_1.getPlayer(), spell);
 
-        if (spell.contentEquals("AR")){
+        if (spell.matches("AR")){
             System.out.println("Spell matched 'AR' ");
             result = ShieldSpell.dirtShield(itemUsageContext_1);
         }

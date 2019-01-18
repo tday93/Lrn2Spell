@@ -1,9 +1,8 @@
 package net.lrn2spell.blocks;
 
 import net.lrn2spell.Lrn2Spell;
-import net.lrn2spell.blocks.SpellBlock;
 import net.lrn2spell.blocks.entity.SpellBlockEntity;
-import net.lrn2spell.items.Lrn2SpellItems;
+import net.lrn2spell.items.ModItems;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
@@ -15,28 +14,27 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.function.Supplier;
 
-public class Lrn2SpellBlocks {
+public class ModBlocks {
 
-    public static Block SPELL_BLOCK;
+    public static Block SPELL_BLOCK = new SpellBlock();
 
     public static BlockEntityType<SpellBlockEntity> SPELL_BLOCK_BE;
 
     public static void init() {
 
-        SPELL_BLOCK = register(new SpellBlock(), "spell_block", Lrn2Spell.lrn2spellGroup );
-
         SPELL_BLOCK_BE = register("spell_block", SpellBlockEntity::new);
+
+        register(SPELL_BLOCK, "spell_block", Lrn2Spell.lrn2spellGroup);
     }
 
-    public static Block register(Block block, String name, ItemGroup tab){
-        Registry.register(Registry.BLOCK, new Identifier(Lrn2Spell.MOD_ID, name), block);
+    public static void register(Block block, String name, ItemGroup tab){
+        Registry.BLOCK.register(new Identifier(Lrn2Spell.MOD_ID, name), block);
         BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(tab));
-        Lrn2SpellItems.register(item, name);
-        return block;
+        ModItems.register(item, name);
 
     }
 
     public static BlockEntityType register(String name, Supplier<BlockEntity> be){
-        return Registry.register(Registry.BLOCK_ENTITY, Lrn2Spell.MOD_ID + ":" + name, BlockEntityType.Builder.create(be).build(null));
+        return Registry.register(Registry.BLOCK_ENTITY, new Identifier(Lrn2Spell.MOD_ID, name), BlockEntityType.Builder.create(be).build(null));
     }
 }

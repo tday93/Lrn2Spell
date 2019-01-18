@@ -1,7 +1,6 @@
 package net.lrn2spell.spells;
 
-import net.lrn2spell.Lrn2Spell;
-import net.lrn2spell.blocks.Lrn2SpellBlocks;
+import net.lrn2spell.blocks.ModBlocks;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
@@ -22,7 +21,7 @@ public class ShieldSpell {
         if (blocks.isEmpty()){
             return ActionResult.FAILURE;
         } else {
-            blocks.forEach((pos) -> world.setBlockState(pos, Lrn2SpellBlocks.SPELL_BLOCK.getDefaultState(), 0));
+            blocks.forEach((pos) -> world.setBlockState(pos, ModBlocks.SPELL_BLOCK.getDefaultState(), 0));
             return ActionResult.SUCCESS;
         }
 

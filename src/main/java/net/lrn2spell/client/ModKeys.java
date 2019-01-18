@@ -6,7 +6,7 @@ import net.lrn2spell.Lrn2Spell;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.Identifier;
 
-public class Lrn2SpellKeys {
+public class ModKeys {
 
     public static FabricKeyBinding FIRE;
     public static FabricKeyBinding EARTH;

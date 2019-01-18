@@ -1,29 +1,24 @@
 package net.lrn2spell.spells;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
+import net.lrn2spell.entity.BeamSpellEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BoundingBox;
+import net.minecraft.world.World;
 
 public class BeamSpell {
 
-    public static ActionResult arcaneBeam(ItemUsageContext itemUsageContext_1, float dmg){
-        PlayerEntity player = itemUsageContext_1.getPlayer();
-        BlockPos pos = itemUsageContext_1.getPos();
+    public static ActionResult arcaneBeam(PlayerEntity player, float dmg){
+        System.out.println("In Arcnae Beam Handling");
+        World world = player.getEntityWorld();
 
-        LivingEntity target = itemUsageContext_1.getWorld().getClosestVisibleEntityTo(LivingEntity.class, new BoundingBox(pos), player);
-
-        if (target != null) {
-            target.damage(DamageSource.MAGIC, dmg);
+        if (!world.isClient){
+            BeamSpellEntity beamSpellEntity_1 = new BeamSpellEntity(world, player);
+            beamSpellEntity_1.calculateVelocity(player, player.pitch, player.yaw, 0.0F, 1.5F, 1.0F);
+            world.spawnEntity(beamSpellEntity_1);
             return ActionResult.SUCCESS;
-        } else {
-            return ActionResult.FAILURE;
         }
 
 
-
+        return ActionResult.PASS;
     }
 }
