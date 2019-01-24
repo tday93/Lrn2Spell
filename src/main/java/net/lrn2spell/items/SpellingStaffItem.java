@@ -1,8 +1,9 @@
 package net.lrn2spell.items;
 
 import net.lrn2spell.misc.Tools;
-import net.lrn2spell.spells.BeamSpell;
+import net.lrn2spell.spells.ProjectileSpell;
 import net.lrn2spell.spells.ShieldSpell;
+import net.lrn2spell.spells.SpraySpell;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,15 +22,17 @@ public class SpellingStaffItem extends Item {
     }
 
     public TypedActionResult<ItemStack> use(World world_1, PlayerEntity player, Hand hand_1){
-        System.out.println("Using Spell Staff");
         TypedActionResult<ItemStack> result = new TypedActionResult<>(ActionResult.PASS, player.getStackInHand(hand_1));
         ItemStack stack = player.getStackInHand(hand_1);
         String spell = Tools.getTagCompound(stack).getString("spell");
-        Tools.notify(player, spell);
 
         if (spell.matches("RR")){
-            System.out.println("Spell Matched 'RR'");
-            result = new TypedActionResult<>(BeamSpell.arcaneBeam(player, 4.0f), stack);
+            Tools.notify(player,"Spell Matched 'RR'");
+            result = new TypedActionResult<>(ProjectileSpell.arcaneProjectile(player, 4.0f), stack);
+        }
+        if (spell.matches("EE")){
+            Tools.notify(player,"Spell Matched 'EE'");
+            result = new TypedActionResult<>(SpraySpell.spraySpell(player), stack);
         }
         this.clearSpell(stack);
 
@@ -42,14 +45,16 @@ public class SpellingStaffItem extends Item {
 
     public ActionResult useOnBlock(ItemUsageContext itemUsageContext_1) {
         ActionResult result = ActionResult.PASS;
-        System.out.println("Using Staff");
         ItemStack stack = itemUsageContext_1.getItemStack();
         String spell = Tools.getTagCompound(stack).getString("spell");
         Tools.notify(itemUsageContext_1.getPlayer(), spell);
 
         if (spell.matches("AR")){
-            System.out.println("Spell matched 'AR' ");
+            Tools.notify(itemUsageContext_1.getPlayer(),"Spell matched 'AR' ");
             result = ShieldSpell.dirtShield(itemUsageContext_1);
+        } else if (spell.matches("RR")){
+            TypedActionResult<ItemStack> tRes = this.use(itemUsageContext_1.getWorld(), itemUsageContext_1.getPlayer(), Hand.MAIN);
+            result = tRes.getResult();
         }
 
         // this is where spell determination will need to happen
@@ -66,7 +71,7 @@ public class SpellingStaffItem extends Item {
         Tools.getTagCompound(stack).putString("spell", newSpell);
     }
 
-    public void addElement(ItemStack stack, int element){
+    public void addElement(PlayerEntity player, ItemStack stack, int element){
         String strElement = "";
         if (element == 1){
             strElement = "F";
@@ -81,14 +86,12 @@ public class SpellingStaffItem extends Item {
         } else if (element == 6){
             strElement = "S";
         }
-        System.out.println("Adding element: " + strElement);
+        Tools.notify(player, "Adding element: " + strElement);
         String spell = Tools.getTagCompound(stack).getString("spell");
-        System.out.println("Existing Spell:" + spell);
         if (spell.length() >= 5){
             spell = spell.substring(1,5);
         }
         spell = spell + strElement;
-        System.out.println("New Spell:" + spell);
         Tools.getTagCompound(stack).putString("spell", spell);
 
     }

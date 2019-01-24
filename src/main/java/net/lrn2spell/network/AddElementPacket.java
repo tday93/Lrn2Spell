@@ -50,7 +50,7 @@ public class AddElementPacket implements Packet{
             ItemStack heldItem = player.getMainHandStack();
             if (!heldItem.isEmpty() && heldItem.getItem() instanceof SpellingStaffItem){
                 SpellingStaffItem staff = (SpellingStaffItem) (heldItem.getItem());
-                staff.addElement(heldItem, message.element);
+                staff.addElement(player, heldItem, message.element);
             }
         }
     }
