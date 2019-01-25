@@ -21,7 +21,7 @@ public class SpraySpell {
     public static ActionResult spraySpell(PlayerEntity player){
         ArrayList<LivingEntity> targets = getSprayTargets(player, 7);
         for(LivingEntity entity : targets){
-            entity.damage(DamageSource.MAGIC, 5.0f);
+            entity.damage(DamageSource.MAGIC, 0.2f);
         }
         return ActionResult.PASS;
 

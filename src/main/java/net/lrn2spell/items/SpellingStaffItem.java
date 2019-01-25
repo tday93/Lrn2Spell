@@ -4,6 +4,7 @@ import net.lrn2spell.misc.Tools;
 import net.lrn2spell.spells.ProjectileSpell;
 import net.lrn2spell.spells.ShieldSpell;
 import net.lrn2spell.spells.SpraySpell;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,7 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 
@@ -34,11 +36,6 @@ public class SpellingStaffItem extends Item {
             Tools.notify(player,"Spell Matched 'EE'");
             result = new TypedActionResult<>(SpraySpell.spraySpell(player), stack);
         }
-        this.clearSpell(stack);
-
-
-
-
         return result;
 
     }
@@ -60,6 +57,18 @@ public class SpellingStaffItem extends Item {
         // this is where spell determination will need to happen
         this.clearSpell(stack);
         return result;
+    }
+
+    public void onItemStopUsing(ItemStack itemStack_1, World world_1, LivingEntity livingEntity_1, int int_1){
+        this.clearSpell(itemStack_1);
+    }
+
+    public UseAction getUseAction(ItemStack itemStack){
+        return UseAction.BOW;
+    }
+
+    public int getMaxUseTime(ItemStack itemStack_1) {
+        return 72000;
     }
 
     public String getSpell(ItemStack stack){
